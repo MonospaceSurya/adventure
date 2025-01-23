@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=UxBLmzX1DlvjESNU0ZjO4RiCCk8W6K0nNa84Aaf_dzpr3uOVhgb1Nf4ZoeCKhXmDTaUmVq8E0DuKq1ImMDgYeg" charset="UTF-8"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-9EB7SEMF70"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9EB7SEMF70');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Michael Fogleman: More</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png?bust=1496020346">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Quicksand:400,500">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?bust=1614013756">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/echo.min.js?bust=1495842393"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+
+        body {
+            color: #222;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: #fafaf8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        
+        a {
+            color: #337ab7;
+        }
+        
+        a:hover {
+            color: #337ab7;
+        }
+        
+        .project-summary p a, .project-body p a {
+            text-decoration: underline;
+        }
+        
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+            background-color: #337ab7;
+        }
+        
+        .social-icons a:hover {
+            color: #337ab7;
+        }
+        
+        .label-default {
+            background-color: #445;
+        }
+        
+        .label-warning {
+            background-color: #FFB03B;
+        }
+        
+        .embed-responsive {
+            margin: 20px 0;
+        }
+        
+        .caption {
+            text-align: center;
+            margin: 10px 0 20px 0;
+            color: #666;
+            font-size: 100%;
+        }
+        
+        .caption span {
+            color: #222;
+            font-size: 133%;
+            font-weight: bold;
+        }
+        
+        p, li, figcaption {
+            font-size: 18px;
+        }
+        
+        p.lead {
+            font-size: 24px;
+        }
+        
+        .label {
+            font-weight: 500;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 a {
+            color: #222;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 500px) {
+            .header .lead {
+                font-size: 18px;
+            }
+        }
+        
+        .content {
+            background: #fff;
+            padding: 20px 0 30px 0;
+        }
+        
+        .footer {
+            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+        
+        .social-note {
+            font-size: 14px;
+        }
+        
+        .social-icons {
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .social-icons a {
+            color: #222;
+        }
+        
+        .social-icons i {
+            margin: 0px;
+        }
+        
+        @media (min-width: 768px) {
+            .social-icons {
+                font-size: 36px;
+            }
+            .social-icons i {
+                margin: 0 4px;
+            }
+        }
+        
+        .project h3 a {
+            color: #222;
+        }
+        
+        .project p.lead {
+            margin-bottom: 10px;
+        }
+        
+        .project-sort {
+            text-align: center;
+            background: #fafaf8;
+            padding: 20px 0;
+            margin: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .project-sort ul {
+            display: inline-block;
+        }
+        
+        .project-sort li a {
+            padding: 0.3em 0.75em 0.35em;
+            font-size: 85%;
+            font-weight: 500;
+        }
+        
+        .project-prev-next a {
+            min-width: 150px;
+        }
+        
+        .project-prev-next span.pull-left {
+            padding-right: 10px;
+        }
+        
+        .project-prev-next span.pull-right {
+            padding-left: 10px;
+        }
+        
+        .project-tags {
+            margin-top: -5px;
+            margin-bottom: 20px;
+            line-height: 1.75em;
+        }
+        
+        .project-tags a {
+            text-decoration: none;
+        }
+        
+        .project-links {
+            font-weight: 500;
+        }
+        
+        .project-images {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 0 7px;
+        }
+        
+        .project-images .col {
+            padding: 0 8px;
+            margin-bottom: 16px;
+        }
+        
+        .about figcaption {
+            margin-top: 10px;
+        }
+        
+        .about ul {
+            padding-left: 25px;
+        }
+        
+        .phrases .buttons {
+            text-align: center;
+            margin: 1em;
+        }
+        
+        .phrases .words {
+            text-align: center;
+            text-transform: capitalize;
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .more small {
+            color: #888;
+        }
+        
+        .birds {
+            margin-top: 20px;
+        }
+        
+        .birds h3 {
+            color: #111;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 150%;
+            text-align: center;
+        }
+        
+        .birds h4 {
+            color: #444;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 110%;
+            text-align: center;
+        }
+        
+        .birds p {
+            font-size: 100%;
+            text-align: center;
+            margin-bottom: 35px;
+            margin-top: 0;
+            color: #444;
+        }
+        
+        .birds p span {
+            font-weight: bold;
+        }
+        
+        @media (min-width: 768px) {
+            pre code {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1><a href="/">Michael Fogleman</a></h1>
+        <p class="lead">
+            <a href="/projects/">Projects</a> &bull;
+            <!-- <a href="/plotter/">Artwork</a> &bull; -->
+            <a href="/about/">About</a> &bull;
+            <a href="/resume/">Resume</a> &bull;
+            <a href="/more/">More</a>
+        </p>
+    </div>
+    <div class="content">
+        
+<div class="container more">
+    <h2>More</h2>
+    <p class="lead">Last but not least...</p>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Woodworking Projects</h3>
+            <ul>
+                <li><a href="https://i.imgur.com/mAxLNGm.jpg">Maple Storage Boxes</a> &hellip; <small>April 2020</small></li>
+                <li><a href="https://imgur.com/a/a3uRwEw">Geometric Wall Art</a> &hellip; <small>October 2019</small></li>
+                <li><a href="http://imgur.com/a/0K8JmII">Painted Dresser</a> &hellip; <small>April 2019</small></li>
+                <li><a href="http://imgur.com/a/d9XMdOW">Pythagorean Theorem</a> &hellip; <small>March 2019</small></li>
+                <li><a href="http://imgur.com/a/ss4Rq3I">Tic Tac Toe</a> &hellip; <small>July 2018</small></li>
+                <li><a href="http://imgur.com/a/NbZISVw">Kids' Chairs</a> &hellip; <small>June 2018</small></li>
+                <li><a href="http://imgur.com/a/n5K1FSI">Maple Wall Shelf</a> &hellip; <small>May 2018</small></li>
+                <li><a href="http://imgur.com/a/BYEZYMW">Pine Bookcase</a> &hellip; <small>April 2018</small></li>
+                <li><a href="http://imgur.com/a/yo2JI">Extendable Walnut Dining Table</a> &hellip; <small>October 2017</small></li>
+                <li><a href="http://imgur.com/a/mw0Mk">Maple Shelves</a> &hellip; <small>April 2017</small></li>
+                <li><a href="http://imgur.com/a/BrmOs">Wooden Sunset</a> &hellip; <small>November 2016</small></li>
+                <li><a href="http://imgur.com/a/HjMAZ">Walnut and Maple Dining Table</a> &hellip; <small>September 2016</small></li>
+                <li><a href="http://imgur.com/a/C74P0">Wooden Lamp</a> &hellip; <small>August 2016</small></li>
+                <li><a href="http://imgur.com/a/H2jl5">Walnut Storage Shelves</a> &hellip; <small>July 2016</small></li>
+                <li><a href="http://imgur.com/a/tnFNG">Cherry and Walnut Desk</a> &hellip; <small>June 2016</small></li>
+                <li><a href="http://imgur.com/a/OIvdZ">Engraved Toddler Stool</a> &hellip; <small>December 2015</small></li>
+                <li><a href="http://imgur.com/a/fdJ0C">Shaker-style Step Stool</a> &hellip; <small>December 2015</small></li>
+                <li><a href="http://imgur.com/a/TGmzj">Wooden Box</a> &hellip; <small>December 2015</small></li>
+                <li><a href="http://imgur.com/a/8sVs1">Oak Storage Bench</a> &hellip; <small>November 2015</small></li>
+                <li><a href="http://imgur.com/a/DryPW">Mahogany Coasters</a> &hellip; <small>October 2015</small></li>
+                <li><a href="http://imgur.com/a/4E82s">Wooden Map of North Carolina</a> &hellip; <small>June 2015</small></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>Articles</h3>
+            <ul>
+                <li><a href="/aoc18/">Advent of Code 2018 Solutions</a> &hellip; <small>December 2018</small></li>
+                <li><a href="/rush/">Solving Rush Hour, the Puzzle</a> &hellip; <small>July 2018</small></li>
+                <li><a href="/pack3d/">3D Packing for SLS Printing</a> &hellip; <small>June 2017</small></li>
+                <li><a href="https://medium.com/@fogleman/pen-plotter-programming-the-basics-ec0407ab5929">Pen Plotter Programming: The Basics</a> &hellip; <small>March 2017</small></li>
+                <li><a href="https://medium.com/@fogleman/voxel-rendering-techniques-fa8d869457ca">Voxel Rendering Techniques</a> &hellip; <small>Februrary 2017</small></li>
+                <li><a href="https://artplusmarketing.com/product-launch-post-mortem-primitive-for-macos-2eee316134ad">Product Launch Recap: Primitive for macOS</a> &hellip; <small>December 2016</small></li>
+                <li><a href="https://techlog.transloc.com/ridesharing-algorithms-in-transloc-ondemand-7acfeddbfe1f">Ridesharing Algorithms in TransLoc OnDemand</a> &hellip; <small>March 2016</small></li>
+                <li><a href="https://medium.com/@fogleman/a-wooden-map-of-north-carolina-a2b21ca47ca2">A Wooden Map of North Carolina</a> &hellip; <small>June 2015</small></li>
+                <li><a href="https://medium.com/@fogleman/i-made-an-nes-emulator-here-s-what-i-learned-about-the-original-nintendo-2e078c9b28fe">I made an NES emulator</a> &hellip; <small>April 2015</small></li>
+                <li><a href="https://medium.com/@fogleman/my-top-10-side-projects-from-2014-713a78d6fc9d">My Top 10 Side Projects from 2014</a> &hellip; <small>January 2015</small></li>
+            </ul>
+            <h3>Talks</h3>
+            <ul>
+                <li><a href="https://youtu.be/77JZ6Zj2BtE?t=23s">Leaflet</a> &hellip; <small>April 2016</small></li>
+                <li><a href="https://youtu.be/pxg0LRVtnpo?t=4270s">OpenStreetMap</a> &hellip; <small>March 2016</small></li>
+                <li><a href="https://youtu.be/1W_rSIvdEJA?t=4058s">Makeblock XY Pen Plotter</a> &hellip; <small>January 2016</small></li>
+                <li><a href="https://youtu.be/x4oQsQ76OHY?t=60">Path Tracing</a> &hellip; <small>September 2015</small></li>
+            </ul>
+            <h3>Etc.</h3>
+            <ul>
+                <li><a href="/birds2020/">Bird Photography 2020</a> &hellip; <small>November 2020</small></li>
+                <li><a href="https://www.michaelfogleman.com/static/carolina-beach-birds-2020/">Carolina Beach Birds</a> &hellip; <small>October 2020</small></li>
+                <li><a href="https://www.michaelfogleman.com/static/office-panorama/">Panorama of My Home Office</a> &hellip; <small>May 2018</small></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="footer">
+        <p class="social-icons">
+            <a href="https://www.facebook.com/michael.fogleman"><i class="fa fa-facebook"></i></a>
+            <a href="https://github.com/fogleman"><i class="fa fa-github"></i></a>
+            <a href="https://www.instagram.com/michael.fogleman/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/michael-fogleman-5854341/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://medium.com/@fogleman"><i class="fa fa-medium"></i></a>
+            <a href="https://www.reddit.com/user/FogleMonster/"><i class="fa fa-reddit"></i></a>
+            <a href="https://stackoverflow.com/users/90308/foglebird"><i class="fa fa-stack-overflow"></i></a>
+            <a href="https://twitter.com/FogleBird"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/user/FogleBird"><i class="fa fa-youtube"></i></a>
+            <a href="mailto:michael.fogleman@gmail.com"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="social-note">
+            find me elsewhere on the web
+        </p>
+    </div>
+
+</body>
+</html>

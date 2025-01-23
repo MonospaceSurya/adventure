@@ -1,0 +1,1236 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=2lZ0ZWG0sb2lR2dKS69iQ_otq327v2uJ3Z8ANawB_dF0U7VhA7dsJLMztPoa2o9HASCkOouOliO2Zzzk20jSUw" charset="UTF-8"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-9EB7SEMF70"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9EB7SEMF70');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Michael Fogleman: Projects</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png?bust=1496020346">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Quicksand:400,500">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?bust=1614013756">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/echo.min.js?bust=1495842393"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function() {
+            $('.project-images').each(function() {
+                $(this).magnificPopup({
+                    delegate: '.project-image',
+                    type:'image',
+                    gallery: {
+                        enabled: true
+                    }
+                });
+            });
+            echo.init({
+                offset: 1000,
+                throttle: 100,
+                debounce: false,
+            });
+        
+            const projects = $('.project');
+        
+            function sortByStars() {
+                projects.sort((a, b) => {
+                    const starsA = parseInt($(a).find('.label-warning .fa-star').next().text().replace(/,/g, '')) || 0; //Handle cases where stars might be missing
+                    const starsB = parseInt($(b).find('.label-warning .fa-star').next().text().replace(/,/g, '')) || 0;
+                    return starsB - starsA;
+                }).appendTo('.content');
+            }
+        
+            function sortByName() {
+                projects.sort((a, b) => {
+                    const nameA = $(a).find('h3 a').text().toLowerCase();
+                    const nameB = $(b).find('h3 a').text().toLowerCase();
+                    return nameA.localeCompare(nameB);
+                }).appendTo('.content');
+            }
+        
+            function sortByYear() {
+                projects.sort((a, b) => {
+                    const yearA = parseInt($(a).find('small').text().split(' ')[1]) || 0; //Extract year, handle missing year gracefully
+                    const yearB = parseInt($(b).find('small').text().split(' ')[1]) || 0;
+                    return yearB - yearA; //Sort descending by year
+                }).appendTo('.content');
+            }
+        
+            $('.nav-pills li a').click(function(e) {
+                e.preventDefault();
+                $('.nav-pills li').removeClass('active');
+                $(this).parent().addClass('active');
+        
+                const sortType = $(this).attr('href').split('/').pop();
+                switch (sortType) {
+                    case 'stars':
+                        sortByStars();
+                        break;
+                    case 'name':
+                        sortByName();
+                        break;
+                    case 'date':
+                        sortByYear();
+                        break;
+                    default:
+                        sortByYear();
+                        break;
+                }
+            });
+        });
+    </script>
+    <style>
+        body {
+            color: #222;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: #fafaf8;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        
+        a {
+            color: #337ab7;
+        }
+        
+        a:hover {
+            color: #337ab7;
+        }
+        
+        .project-summary p a, .project-body p a {
+            text-decoration: underline;
+        }
+        
+        .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+            background-color: #337ab7;
+        }
+        
+        .social-icons a:hover {
+            color: #337ab7;
+        }
+        
+        .label-default {
+            background-color: #445;
+        }
+        
+        .label-warning {
+            background-color: #FFB03B;
+        }
+        
+        .embed-responsive {
+            margin: 20px 0;
+        }
+        
+        .caption {
+            text-align: center;
+            margin: 10px 0 20px 0;
+            color: #666;
+            font-size: 100%;
+        }
+        
+        .caption span {
+            color: #222;
+            font-size: 133%;
+            font-weight: bold;
+        }
+        
+        p, li, figcaption {
+            font-size: 18px;
+        }
+        
+        p.lead {
+            font-size: 24px;
+        }
+        
+        .label {
+            font-weight: 500;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 a {
+            color: #222;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 500px) {
+            .header .lead {
+                font-size: 18px;
+            }
+        }
+        
+        .content {
+            background: #fff;
+            padding: 20px 0 30px 0;
+        }
+        
+        .footer {
+            border-top: 1px solid #eee;
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+        
+        .social-note {
+            font-size: 14px;
+        }
+        
+        .social-icons {
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .social-icons a {
+            color: #222;
+        }
+        
+        .social-icons i {
+            margin: 0px;
+        }
+        
+        @media (min-width: 768px) {
+            .social-icons {
+                font-size: 36px;
+            }
+            .social-icons i {
+                margin: 0 4px;
+            }
+        }
+        
+        .project h3 a {
+            color: #222;
+        }
+        
+        .project p.lead {
+            margin-bottom: 10px;
+        }
+        
+        .project-sort {
+            text-align: center;
+            background: #fafaf8;
+            padding: 20px 0;
+            margin: 20px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .project-sort ul {
+            display: inline-block;
+        }
+        
+        .project-sort li a {
+            padding: 0.3em 0.75em 0.35em;
+            font-size: 85%;
+            font-weight: 500;
+        }
+        
+        .project-prev-next a {
+            min-width: 150px;
+        }
+        
+        .project-prev-next span.pull-left {
+            padding-right: 10px;
+        }
+        
+        .project-prev-next span.pull-right {
+            padding-left: 10px;
+        }
+        
+        .project-tags {
+            margin-top: -5px;
+            margin-bottom: 20px;
+            line-height: 1.75em;
+        }
+        
+        .project-tags a {
+            text-decoration: none;
+        }
+        
+        .project-links {
+            font-weight: 500;
+        }
+        
+        .project-images {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 0 7px;
+        }
+        
+        .project-images .col {
+            padding: 0 8px;
+            margin-bottom: 16px;
+        }
+        
+        .about figcaption {
+            margin-top: 10px;
+        }
+        
+        .about ul {
+            padding-left: 25px;
+        }
+        
+        .phrases .buttons {
+            text-align: center;
+            margin: 1em;
+        }
+        
+        .phrases .words {
+            text-align: center;
+            text-transform: capitalize;
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .more small {
+            color: #888;
+        }
+        
+        .birds {
+            margin-top: 20px;
+        }
+        
+        .birds h3 {
+            color: #111;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 150%;
+            text-align: center;
+        }
+        
+        .birds h4 {
+            color: #444;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 110%;
+            text-align: center;
+        }
+        
+        .birds p {
+            font-size: 100%;
+            text-align: center;
+            margin-bottom: 35px;
+            margin-top: 0;
+            color: #444;
+        }
+        
+        .birds p span {
+            font-weight: bold;
+        }
+        
+        @media (min-width: 768px) {
+            pre code {
+                font-size: 17px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div class="header">
+        <h1><a href="/">Surya Santhosh</a></h1>
+        <p class="lead">
+            <a href="/projects/">Projects</a> &bull;
+            <!-- <a href="/plotter/">Artwork</a> &bull; -->
+            <a href="/about/">About</a> &bull;
+            <a href="/resume/">Resume</a> &bull;
+            <a href="/more/">More</a>
+        </p>
+    </div>
+    <div class="content">
+        
+
+<div class="container">
+    <h2>
+        Projects
+        
+    </h2>
+    <p class="lead">This page highlights several of my personal software projects.</p>
+    <h4>Table of Contents</h4>
+    <div class="row hidden-xs">
+        
+            <div class="col-sm-3">
+                <ul class="list-unstyled">
+                    
+
+
+
+
+                        <li><a href="#glaucoma">Glaucoma Detection</a></li>
+                        <li><a href="#colorization">Image Colorization</a></li>
+                        <li><a href="#imageconv">Image Convolutions</a></li>
+                        <li><a href="#nand2tetris">Nand2tetris</a></li>
+                        <li><a href="#robotics">Optimal IRB140</a></li>
+                        <li><a href="#spaceinvaders">Space Invaders</a></li>
+                        <li><a href="#thottil">Thottil App</a></li>
+                        <li><a href="#traveling-pixel">Traveling Pixel</a></li>
+
+                    
+
+                    
+                </ul>
+            </div>
+        
+            <div class="col-sm-3">
+                <ul class="list-unstyled">
+                    
+                        <li><a href="#fireflies">Fireflies</a></li>
+                    
+                        <li><a href="#future-blocks">Future Blocks</a></li>
+                    
+                        <li><a href="#game-frame">Game Frame</a></li>
+                    
+                        <li><a href="#go-graphics">Go Graphics</a></li>
+                    
+                        <li><a href="#gps">GPS</a></li>
+                    
+                        <li><a href="#graph-layout">Graph Layout</a></li>
+                    
+                        <li><a href="#hmm">Heightmap Meshing</a></li>
+                    
+                        <li><a href="#hirise">HiRISE</a></li>
+                    
+                        <li><a href="#imeme">iMeme</a></li>
+                    
+                        <li><a href="#line-art">Line Art</a></li>
+                    
+                        <li><a href="#mapper">Mapper</a></li>
+                    
+                </ul>
+            </div>
+        
+            <div class="col-sm-3">
+                <ul class="list-unstyled">
+                    
+                        <li><a href="#mesh-simplification">Mesh Simplification</a></li>
+                    
+                        <li><a href="#mister-queen">Mister Queen</a></li>
+                    
+                        <li><a href="#nes">NES Emulator</a></li>
+                    
+                        <li><a href="#pac-man">Pac-Man</a></li>
+                    
+                        <li><a href="#path-tracer">Path Tracer</a></li>
+                    
+                        <li><a href="#physarum">Physarum Simulation</a></li>
+                    
+                        <li><a href="#piet">Piet</a></li>
+                    
+                        <li><a href="#pirate-maps">Pirate Maps</a></li>
+                    
+                        <li><a href="#point-maps">Point Maps</a></li>
+                    
+                        <li><a href="#primitive">Primitive</a></li>
+                    
+                        <li><a href="#quads">Quads</a></li>
+                    
+                </ul>
+            </div>
+        
+            <div class="col-sm-3">
+                <ul class="list-unstyled">
+                    
+                        <li><a href="#phrases">Random Phrases</a></li>
+                    
+                        <li><a href="#ribbon">Ribbon Diagrams</a></li>
+                    
+                        <li><a href="#ricochet-robot">Ricochet Robot</a></li>
+                    
+                        <li><a href="#rush">Rush Hour</a></li>
+                    
+                        <li><a href="#scale">Scale</a></li>
+                    
+                        <li><a href="#sdf">SDF Modeling</a></li>
+                    
+                        <li><a href="#star-rocket">Star Rocket</a></li>
+                    
+                        <li><a href="#tiling">Tiling</a></li>
+                    
+                        <li><a href="#traveling-pixel">Traveling Pixel</a></li>
+                    
+                        <li><a href="#word-warrior">Word Warrior</a></li>
+                    
+                </ul>
+            </div>
+        
+    </div>
+    <div class="row visible-xs">
+        
+            <div class="col-xs-6">
+                <ul class="list-unstyled">
+                    
+                        <li><a href="#pack3d">3D Packing</a></li>
+                    
+                        <li><a href="#allrgb">AllRGB</a></li>
+                    
+                        <li><a href="#axi">AxiDraw</a></li>
+                    
+                        <li><a href="#cellular-forms">Cellular Forms</a></li>
+                    
+                        <li><a href="#terrarium">Contour Maps</a></li>
+                    
+                        <li><a href="#craft">Craft</a></li>
+                    
+                        <li><a href="#dcpu-16">DCPU-16</a></li>
+                    
+                        <li><a href="#dlaf">DLA</a></li>
+                    
+                        <li><a href="#domain-coloring">Domain Coloring</a></li>
+                    
+                        <li><a href="#fauxgl">FauxGL</a></li>
+                    
+                        <li><a href="#feed-notifier">Feed Notifier</a></li>
+                    
+                        <li><a href="#fireflies">Fireflies</a></li>
+                    
+                        <li><a href="#future-blocks">Future Blocks</a></li>
+                    
+                        <li><a href="#game-frame">Game Frame</a></li>
+                    
+                        <li><a href="#go-graphics">Go Graphics</a></li>
+                    
+                        <li><a href="#gps">GPS</a></li>
+                    
+                        <li><a href="#graph-layout">Graph Layout</a></li>
+                    
+                        <li><a href="#hmm">Heightmap Meshing</a></li>
+                    
+                        <li><a href="#hirise">HiRISE</a></li>
+                    
+                        <li><a href="#imeme">iMeme</a></li>
+                    
+                        <li><a href="#line-art">Line Art</a></li>
+                    
+                        <li><a href="#mapper">Mapper</a></li>
+                    
+                </ul>
+            </div>
+        
+            <div class="col-xs-6">
+                <ul class="list-unstyled">
+                    
+                        <li><a href="#mesh-simplification">Mesh Simplification</a></li>
+                    
+                        <li><a href="#mister-queen">Mister Queen</a></li>
+                    
+                        <li><a href="#nes">NES Emulator</a></li>
+                    
+                        <li><a href="#pac-man">Pac-Man</a></li>
+                    
+                        <li><a href="#path-tracer">Path Tracer</a></li>
+                    
+                        <li><a href="#physarum">Physarum Simulation</a></li>
+                    
+                        <li><a href="#piet">Piet</a></li>
+                    
+                        <li><a href="#pirate-maps">Pirate Maps</a></li>
+                    
+                        <li><a href="#point-maps">Point Maps</a></li>
+                    
+                        <li><a href="#primitive">Primitive</a></li>
+                    
+                        <li><a href="#quads">Quads</a></li>
+                    
+                        <li><a href="#phrases">Random Phrases</a></li>
+                    
+                        <li><a href="#ribbon">Ribbon Diagrams</a></li>
+                    
+                        <li><a href="#ricochet-robot">Ricochet Robot</a></li>
+                    
+                        <li><a href="#rush">Rush Hour</a></li>
+                    
+                        <li><a href="#scale">Scale</a></li>
+                    
+                        <li><a href="#sdf">SDF Modeling</a></li>
+                    
+                        <li><a href="#star-rocket">Star Rocket</a></li>
+                    
+                        <li><a href="#tiling">Tiling</a></li>
+                    
+                        <li><a href="#traveling-pixel">Traveling Pixel</a></li>
+                    
+                        <li><a href="#word-warrior">Word Warrior</a></li>
+                    
+                </ul>
+            </div>
+        
+    </div>
+</div>
+
+
+<div class="project-sort">
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="#" data-sort="date">
+                <i class="fa fa-calendar"></i> by Date
+            </a>
+        </li>
+        <li>
+            <a href="#" data-sort="stars">
+                <i class="fa fa-star-o"></i> by Stars
+            </a>
+        </li>
+        <li>
+            <a href="#" data-sort="name">
+                <i class="fa fa-sort-alpha-asc"></i> by Name
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+<a name="robotics"></a>
+
+<div class="project container">
+    <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+        <!-- <a href="#" class="btn btn-primary">
+            <i class="fa fa-github"></i> GitHub
+        </a>
+        <a href="#" class="btn btn-default">
+            <i class="fa fa-link"></i> Website (if applicable) </a> -->
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <h3><a href="/projects/robotics/">Optimal IRB140</a> <small>January 2023</small></h3>
+
+    <p class="project-tags">
+        <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+        <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+        <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+        <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+        <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+        <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+    </p>
+
+    <div class="row project-images">
+        <div class="col col-sm-12">
+            <p class="lead">Optimizing ABB IRB 140 Robotic Arm with Shortest Path Algorithms in a 3D Simulation</p>
+            <div class="project-summary">
+                <p>This project features a 3D simulation of the ABB IRB 140, a 6-DOF robotic arm, designed using a Blender-modeled mockup. The simulation leverages shortest path algorithms, including Dijkstra's, to optimize the arm's movements for tasks such as picking and placing objects. The focus is on minimizing traversal path length, energy consumption, heat generation, and mechanical wear. By integrating realistic physics and motion constraints, the project delivers a robust simulation for efficient and precise robotic arm operation.</p>
+
+            </div>
+            <p><strong>Technical Details:</strong>
+                <ul>
+
+                    <li>Modeled ABB IRB 140 in Blender for realistic visuals.</li>
+                    <li>Used Dijkstra’s and others for optimal path planning.</li>
+                    <li>Minimized path length, energy use, and heat generation.</li>
+                    <li>Visualized movements with Three.js and joint constraints.</li>
+                    <li>Implemented obstacle detection for safe operation. </li>
+                </ul>
+            </p>
+
+
+
+
+            <p class="project-links">
+                Links:
+                <a href="https://github.com/MonospaceSurya">GitHub</a>
+            </p>
+
+        </div>
+
+        <div class="col col-sm-12 ">
+            <a href="robotics/images/1.png" class="project-image">
+                <img src="robotics/images/1.png" class="img-responsive center-block" >
+            </a>
+        </div>
+
+
+    </div>
+</div>
+<hr>
+
+
+
+<a name="thottil"></a>
+
+<div class="project container">
+    <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+        <!-- <a href="#" class="btn btn-primary">
+            <i class="fa fa-github"></i> GitHub
+        </a>
+        <a href="#" class="btn btn-default">
+            <i class="fa fa-link"></i> Website (if applicable) </a> -->
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <h3><a href="/projects/thottil/">Thottil App (
+        തൊട്ടിൽ, தொட்டில்)</a> <small>January 2023</small></h3>
+
+    <p class="project-tags">
+        <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+        <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+        <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+        <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+        <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+        <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+    </p>
+
+    <div class="row project-images">
+        <div class="col col-sm-6">
+            <p class="lead">AI-Powered Pregnancy Companion providing Personalized Guidance, Diet & Exercise Plans, and Baby Insights</p>
+            <div class="project-summary">
+                <p>Pregnancy is a beautiful yet challenging journey, often filled with questions, uncertainties, and the need for proper guidance. Many women struggle to navigate this period, worrying about their health, their baby’s development, and their ability to handle motherhood. This project, Birth Buddy, is a step toward making this journey easier, more informed, and empowering. We want to provide every expectant mother with a trusted companion; a digital buddy offering support, care, and clarity at every step of her pregnancy.</p>
+
+            </div>
+            <p><strong>App Features:</strong>
+                <ul>
+                    <li>Integrated an AI-powered assistant to provide personalized pregnancy advice.</li>
+                    <li>Developed custom exercise and diet plans tailored for each pregnancy stage.</li>
+                    <li>Implemented a medication safety checker to ensure drug use is pregnancy-safe.</li>
+                    <li>Created a pregnancy timeline with week-by-week updates on fetal and maternal changes.</li>
+                    <li>Added a symptom tracker to log and monitor health throughout the pregnancy journey.</li>
+                </ul>
+            </p>
+
+
+
+
+            <p class="project-links">
+                Links:
+                <a href="https://github.com/MonospaceSurya">GitHub</a>
+            </p>
+
+        </div>
+        <div class="col col-sm-6 ">
+            <a href="thottil/images/4.png" class="project-image">
+                <img src="thottil/images/4.png" class="img-responsive center-block" >
+            </a>
+        </div>
+        <div class="col col-sm-12 ">
+            <a href="thottil/images/1.png" class="project-image">
+                <img src="thottil/images/1.png" class="img-responsive center-block" >
+            </a>
+        </div>
+        
+        <div class="col col-sm-12 ">
+            <a href="thottil/images/2.png" class="project-image">
+                <img src="thottil/images/2.png" class="img-responsive center-block" >
+            </a>
+        </div>
+        <div class="col col-sm-12 ">
+            <a href="thottil/images/3.png" class="project-image">
+                <img src="thottil/images/3.png" class="img-responsive center-block" >
+            </a>
+        </div>
+
+    </div>
+</div>
+<hr>
+
+
+
+
+
+<a name="pixsort"></a>
+
+<div class="project container">
+    <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+        <!-- <a href="#" class="btn btn-primary">
+            <i class="fa fa-github"></i> GitHub
+        </a>
+        <a href="#" class="btn btn-default">
+            <i class="fa fa-link"></i> Website (if applicable) </a> -->
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <h3><a href="/projects/pixsort/">Traveling Pixel</a> <small>January 2023</small></h3>
+
+    <p class="project-tags">
+        <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+        <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+        <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+        <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+        <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+        <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+    </p>
+
+    <div class="row project-images">
+        <div class="col col-sm-8">
+            <p class="lead">Applying the traveling salesman problem to pixel art.</p>
+            <div class="project-summary">
+                <p>This code uses simulated annealing to find the shortest path to visit all black pixels in an image. Then it generates an animated GIF showing the order of traversal.</p>
+
+            </div>
+
+            <p class="project-links">
+                Links:
+                <a href="https://github.com/MonospaceSurya">GitHub</a>
+            </p>
+
+        </div>
+
+        <div class="col col-sm-4 ">
+            <a href="pixsort/images/1.gif" class="project-image">
+                <img src="pixsort/images/1.gif" class="img-responsive center-block" >
+            </a>
+        </div>
+        
+
+
+    </div>
+</div>
+<hr>
+
+
+
+
+
+<a name="imageconv"></a>
+
+<div class="project container">
+    <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+        <!-- <a href="#" class="btn btn-primary">
+            <i class="fa fa-github"></i> GitHub
+        </a>
+        <a href="#" class="btn btn-default">
+            <i class="fa fa-link"></i> Website (if applicable) </a> -->
+        <!-- Add more buttons as needed -->
+    </div>
+
+    <h3><a href="/projects/imageconv/">Image Convolutions</a> <small>January 2023</small></h3>
+
+    <p class="project-tags">
+        <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+        <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+        <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+        <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+        <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+        <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+    </p>
+
+    <div class="row project-images">
+        <div class="col col-sm-8">
+            <p class="lead">Exploring Image Processing through Creative Manipulation of Convolutional Kernels.</p>
+            <div class="project-summary">
+                <p>Ever paused to wonder how the images we scroll through daily—on Instagram, YouTube, or even in a simple photo album—are enhanced or manipulated to look so captivating? I’ve always been fascinated by how small tweaks in numbers can completely change an image’s look. This project is my way of exploring that magic, Convolutional magic.</p>
+
+            </div>
+            <p><strong>Technical Details:</strong>
+                <ul>
+                    <li>Use stb_image to load, manipulate, and save images.</li>
+                    <li>Applied convolution techniques for blurring, edge detection, and embossing.</li>
+                    <li>Performed grayscale conversion, channel swapping, and thresholding for black-and-white effects.</li>
+                    <li>Explored the role of kernel size and values in altering outputs.</li>
+                    <li>Save and document outputs for easy interpretation.</li>
+                </ul>
+            </p>
+
+            <p class="project-links">
+                Links:
+                <a href="https://github.com/MonospaceSurya">GitHub</a>
+            </p>
+
+        </div>
+
+        <div class="col col-sm-4 ">
+            <a href="imageconv/images/2.gif" class="project-image">
+                <img src="imageconv/images/2.gif" class="img-responsive center-block" >
+            </a>
+        </div>
+        
+        <div class="col col-sm-12 ">
+            <a href="imageconv/images/1.gif" class="project-image">
+                <img src="imageconv/images/1.gif" class="img-responsive center-block" >
+            </a>
+        </div>
+
+    </div>
+</div>
+<hr>
+
+
+
+
+    <a name="colorization"></a>
+
+    <div class="project container">
+        <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+            <!-- <a href="#" class="btn btn-primary">
+                <i class="fa fa-github"></i> GitHub
+            </a>
+            <a href="#" class="btn btn-default">
+                <i class="fa fa-link"></i> Website (if applicable) </a> -->
+            <!-- Add more buttons as needed -->
+        </div>
+    
+        <h3><a href="/projects/colorization/">Image Colorization</a> <small>January 2023</small></h3>
+    
+        <p class="project-tags">
+            <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+            <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+            <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+            <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+            <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+            <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+        </p>
+    
+        <div class="row project-images">
+            <div class="col col-sm-12">
+                <p class="lead">Let there be Color!</p>
+                <div class="project-summary">
+                    <p>This project was a deep dive into the fascinating world of image colorization, where I tackled the challenge of automatically adding realistic color to grayscale photographs. The core idea was to reframe this inherently ambiguous problem as a classification task within a deep learning framework. I trained a convolutional neural network on a massive dataset of color images, carefully balancing the color classes to encourage vibrant and diverse outputs.</p>
+                    <p><strong>Technical Details:</strong>
+                        <ul>
+                            <li>Utilized a CNN architecture as the backbone for image processing and feature extraction.</li>
+                            <li>Formulated colorization as a classification problem, assigning color probabilities to each pixel. </li>
+                            <li>Implemented a class-rebalancing strategy during training to enhance the diversity and vibrancy of the generated colors.</li>
+                            <li>Trained the model on a dataset comprising over one million color images.</li>
+                            <li>Leveraged Python along with TensorFlow/PyTorch for model development and training.</li>
+                        </ul>
+                    </p>
+                </div>
+    
+                <p class="project-links">
+                    Links:
+                    <a href="https://github.com/MonospaceSurya">GitHub</a>
+                </p>
+    
+            </div>
+    
+            <div class="col col-sm-12 ">
+                <a href="colorization/images/3.gif" class="project-image">
+                    <img src="colorization/images/3.gif" class="img-responsive center-block" >
+                </a>
+            </div>
+            
+    
+
+        </div>
+    </div>
+    <hr>
+
+
+
+    <a name="glaucoma"></a>
+
+    <div class="project container">
+        <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+            <!-- <a href="#" class="btn btn-primary">
+                <i class="fa fa-github"></i> GitHub
+            </a>
+            <a href="#" class="btn btn-default">
+                <i class="fa fa-link"></i> Website (if applicable) </a> -->
+            <!-- Add more buttons as needed -->
+        </div>
+    
+        <h3><a href="/projects/glaucoma/">Glaucoma Detection</a> <small>January 2023</small></h3>
+    
+        <p class="project-tags">
+            <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+            <a href="/projects/tagged/ai/"><span class="label label-default">AI</span></a>
+            <a href="/projects/tagged/medical-imaging/"><span class="label label-default">Medical Imaging</span></a>
+            <a href="/projects/tagged/deep-learning/"><span class="label label-default">Deep Learning</span></a>
+            <a href="/projects/tagged/computer-vision/"><span class="label label-default">Computer Vision</span></a>
+            <a href="/projects/tagged/healthcare-tech/"><span class="label label-default">Healthcare Tech</span></a>
+
+        </p>
+    
+        <div class="row project-images">
+            <div class="col col-sm-12">
+                <p class="lead">Advancing Early Diagnosis of Glaucoma through Deep Learning and Optic Disc Segmentation techniques</p>
+                <div class="project-summary">
+                    <p>Glaucoma, a leading cause of irreversible blindness, necessitates innovative diagnostic solutions. By applying deep learning to fundus/retinal images, this project aimed to develop an advanced detection method for improved early glaucoma identification and diagnosis.</p>
+                    <p><strong>Technical Details:</strong>
+                        <ul>
+                            <li>Utilized Drishti-GS dataset for comprehensive glaucoma image analysis</li>
+                            <li>Fine-tuned Segment Anything Model (SAM) for precise optic disc segmentation. </li>
+                            <li>Systematically tested neural network architectures, with AlexNet achieving highest precision for glaucoma detection.</li>
+                            <li>Implemented Explainable AI techniques to enhance interpretability for medical professionals. </li>
+                            <li>Hardware Acceleration: Utilized an RTX 3050 GPU for efficient model training and evaluation.</li>
+                        </ul>
+                    </p>
+                </div>
+    
+                <p class="project-links">
+                    Links:
+                    <a href="https://github.com/MonospaceSurya">GitHub</a>
+                </p>
+    
+            </div>
+    
+            <div class="col col-sm-5 hidden-xs">
+                <a href="glaucoma/images/1.jpg" class="project-image">
+                    <img src="glaucoma/images/1.jpg" class="img-responsive center-block">
+                </a>
+            </div>
+            
+            <div class="col col-sm-7">
+                <a href="glaucoma/images/3.png" class="project-image">
+                    <img src="glaucoma/images/3.png" class="img-responsive center-block">
+                </a>
+            </div>
+    
+
+        </div>
+    </div>
+    <hr>
+
+
+    <a name="spaceinvaders"></a>
+
+    <div class="project container">
+        <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+            <!-- <a href="#" class="btn btn-primary">
+                <i class="fa fa-github"></i> GitHub
+            </a>
+            <a href="#" class="btn btn-default">
+                <i class="fa fa-link"></i> Website (if applicable) </a> -->
+            <!-- Add more buttons as needed -->
+        </div>
+    
+        <h3><a href="/projects/spaceinvaders/">Space Invaders</a> <small>January 2023</small></h3>
+    
+        <p class="project-tags">
+            <a href="#" class="label label-warning"><i class="fa fa-star"></i> 862</a>  <!-- Star rating first -->
+            <a href="/projects/tagged/assembly/"><span class="label label-default">Assembly</span></a>
+            <a href="/projects/tagged/gamedev/"><span class="label label-default">Compiler</span></a>
+            <a href="/projects/tagged/retro/"><span class="label label-default">Emulator</span></a>
+            <a href="/projects/tagged/jack/"><span class="label label-default">OS</span></a>
+
+        </p>
+    
+        <div class="row project-images">
+            <div class="col col-sm-12">
+                <p class="lead">Recreating the Space Invaders game for the Hack Computer</p>
+                <div class="project-summary">
+                    <p>This was a project born from my love for gaming and my fascination with computers growing up. <a href="https://www.nand2tetris.org" target="_blank">Nand2Tetris course</a> taught me how to build a computer from scratch. Starting with basic NAND gates, designing a CPU, and even creating a custom programming language, Jack, along with its compiler. This version of the Space Invaders game is designed to run on the Hack Computer and is entirely written in the Jack programming language.</p>
+                    <!-- <p><strong>Technical Details:</strong>
+                        <ul>
+                            <li>Assembly language programming for the Hack computer.</li>
+                            <li>Low-level programming and memory management.</li>
+                            <li>Game loop implementation and optimization.</li>
+                            <li>Proficiency in the Jack programming language.</li>
+                            <li>Experience with limited resource environments.</li>
+                        </ul>
+                    </p> -->
+                </div>
+    
+                <p class="project-links">
+                    Links:
+                    <a href="https://github.com/MonospaceSurya">GitHub</a>
+                </p>
+    
+            </div>
+    
+            <div class="col col-sm-6 hidden-xs">
+                <a href="spaceinvaders/images/4.png" class="project-image">
+                    <img src="spaceinvaders/images/4.png" class="img-responsive center-block">
+                </a>
+            </div>
+            
+            <div class="col col-sm-6">
+                <a href="spaceinvaders/images/1.gif" class="project-image">
+                    <img src="spaceinvaders/images/1.gif" class="img-responsive center-block">
+                </a>
+            </div>
+    
+
+        </div>
+    </div>
+    <hr>
+
+    <a name="nand2tetris"></a>
+
+
+    <div class="project container">
+        <div class="btn-toolbar pull-right" style="margin-top: 20px;">
+            <!-- Add any buttons for GitHub, website, etc., as needed -->
+        </div>
+    
+        <h3><a href="/projects/nand2tetris/">Nand2Tetris</a> <small>February 2023</small></h3>
+    
+        <p class="project-tags">
+            <a href="#" class="label label-warning"><i class="fa fa-star"></i> 3332</a> <!-- Star rating first -->
+            <a href="/projects/tagged/logic-gates/"><span class="label label-default">Logic Gates</span></a>
+            <a href="/projects/tagged/computer-architecture/"><span class="label label-default">Computer Architecture</span></a>
+            <a href="/projects/tagged/jack/"><span class="label label-default">Jack Language</span></a>
+        </p>
+    
+        <div class="row project-images">
+            <div class="col col-sm-6">
+                <p class="lead">Building a Computer from Basic Logic Gates</p>
+                <div class="project-summary">
+                    <p>
+                        The <a href="https://www.nand2tetris.org" target="_blank">Nand2Tetris course</a> taught me to build a computer from the ground up. Starting with simple NAND gates, I designed a CPU, created an operating system, and developed a custom programming language, Jack, along with its compiler. This comprehensive experience gave me hands-on exposure to the inner workings of computers and programming at the lowest levels.
+                    </p>
+ 
+                    <p><strong>Technical Highlights:</strong>
+                        <ul>
+                            <li>Design and implementation of a CPU using basic logic gates.</li>
+                            <li>Development of a low-level assembly language for the Hack computer.</li>
+                            <li>Creation of the Jack programming language and its compiler.</li>
+                            <li>Building an operating system and running applications like Space Invaders on the Hack computer.</li>
+                            <li>Insight into the relationship between hardware and software.</li>
+                        </ul>
+                    </p>
+                </div>
+    
+                <p class="project-links">
+                    Links:
+                    <a href="https://github.com/MonospaceSurya">GitHub</a>
+                </p>
+            </div>
+    
+
+
+            <div class="col col-sm-6">
+                <a href="nand2tetris/images/3.gif" class="project-image">
+                    <img src="nand2tetris/images/3.gif" class="img-responsive center-block">
+                </a>
+            </div>
+    
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+    <hr>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectContainer = document.querySelector(".content");
+            const projects = Array.from(projectContainer.querySelectorAll(".project"));
+            const navLinks = document.querySelectorAll(".nav-pills a");
+            const otherContent = [];
+        
+            // Store other content (excluding projects and separators)
+            projectContainer.childNodes.forEach(child => {
+                if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains("project") && child.tagName !== "HR") {
+                    otherContent.push(child);
+                }
+            });
+        
+            const parseNumber = (text) => parseInt(text.replace(/,/g, "").trim(), 10) || 0;
+            let currentSort = 'date';
+            let isAscending = false;
+        
+            navLinks.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+        
+                    const sortKey = link.getAttribute("data-sort");
+        
+                    if (sortKey === currentSort) {
+                        isAscending = !isAscending;
+                    } else {
+                        currentSort = sortKey;
+                        isAscending = false;
+                    }
+        
+                    const sortedProjects = projects.sort((a, b) => {
+                        let comparison = 0;
+                        if (sortKey === "date") {
+                            const dateA = new Date(a.querySelector("h3 small").textContent.trim());
+                            const dateB = new Date(b.querySelector("h3 small").textContent.trim());
+                            comparison = dateB - dateA;
+                        } else if (sortKey === "stars") {
+                            const starsA = parseNumber(a.querySelector(".label-warning").textContent);
+                            const starsB = parseNumber(b.querySelector(".label-warning").textContent);
+                            comparison = starsB - starsA;
+                        } else if (sortKey === "name") {
+                            const nameA = a.querySelector("h3 a").textContent.trim().toLowerCase();
+                            const nameB = b.querySelector("h3 a").textContent.trim().toLowerCase();
+                            comparison = nameA.localeCompare(nameB);
+                        }
+        
+                        return isAscending ? -comparison : comparison;
+                    });
+        
+                    // Remove project elements and existing separators
+                    projects.forEach(project => project.remove());
+                    projectContainer.querySelectorAll("hr").forEach(hr => hr.remove());
+        
+                    // Append sorted projects *with separators*
+                    sortedProjects.forEach((project, index) => {
+                        projectContainer.appendChild(project);
+                        if (index < sortedProjects.length - 1) {
+                            const separator = document.createElement('hr');
+                            projectContainer.appendChild(separator);
+                        }
+                    });
+        
+                    // Add separator at the bottom
+                    if (sortedProjects.length > 0) {
+                        const separator = document.createElement('hr');
+                        projectContainer.appendChild(separator);
+                    }
+        
+                    // Reinitialize plugins
+                    $('.project-images').each(function () {
+                        $(this).magnificPopup({
+                            delegate: '.project-image',
+                            type: 'image',
+                            gallery: {enabled: true}
+                        });
+                    });
+                    echo.init({offset: 1000, throttle: 100, debounce: false});
+        
+                    // Update active button class
+                    navLinks.forEach((nav) => nav.parentNode.classList.remove("active"));
+                    link.parentNode.classList.add("active");
+                });
+            });
+        });
+</script>
+
+
+    </div>
+    <div class="footer">
+        <p class="social-icons">
+            <a href="https://www.facebook.com/michael.fogleman"><i class="fa fa-facebook"></i></a>
+            <a href="https://github.com/fogleman"><i class="fa fa-github"></i></a>
+            <a href="https://www.instagram.com/michael.fogleman/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/michael-fogleman-5854341/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://medium.com/@fogleman"><i class="fa fa-medium"></i></a>
+            <a href="https://www.reddit.com/user/FogleMonster/"><i class="fa fa-reddit"></i></a>
+            <a href="https://stackoverflow.com/users/90308/foglebird"><i class="fa fa-stack-overflow"></i></a>
+            <a href="https://twitter.com/FogleBird"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/user/FogleBird"><i class="fa fa-youtube"></i></a>
+            <a href="mailto:michael.fogleman@gmail.com"><i class="fa fa-envelope"></i></a>
+        </p>
+        <p class="social-note">
+            find me elsewhere on the web
+        </p>
+    </div>
+
+</body>
+</html>
